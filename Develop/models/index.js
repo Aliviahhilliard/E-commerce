@@ -7,16 +7,17 @@ const ProductTag = require('./ProductTag');
 /**
  * defineAssociations - Define model associations
  */
-const defineAssociations = () => {
+// const defineAssociations = () => {
   // Products belongsTo Category
   Product.belongsTo(Category, {
     foreignKey: 'category_id',
-    onDelete: 'CASCADE',
+    onDelete: 'SET NULL',
   });
 
   // Categories have many Products
   Category.hasMany(Product, {
     foreignKey: 'category_id',
+    onDelete: 'SET NULL',
   });
 
   // Products belongToMany Tags (through ProductTag)
@@ -30,9 +31,9 @@ const defineAssociations = () => {
     through: ProductTag,
     foreignKey: 'tag_id',
   });
-};
+// };
 
-defineAssociations();
+// defineAssociations();
 
 
 module.exports = {
